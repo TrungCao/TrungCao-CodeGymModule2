@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Show Provinces</title>
+</head>
+<body>
+    <h3> Show Provinces</h3>
+    <input type="button" value="Add Province"
+           onclick="window.location.href='create'; return false"/>
+
+    <hr>
+<table width="300px" border="1px">
+    <tr>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="pro : ${provinces}">
+        <td th:text="${pro.name}"></td>
+        <td><a th:href="@{'/provinces/update?id=' + ${pro.id}}">Update</a></td>
+        <td><a th:href="@{'/provinces/delete?id=' + ${pro.id}}"
+               onclick="if (!(confirm('Are you sure you want to delete this province?'))) return false">Delete</a></td>
+    </tr>
+</table>
+</body>
+</html>
